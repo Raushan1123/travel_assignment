@@ -25,7 +25,7 @@ export const CustomerDetails = () => {
     e.preventDefault();
     setLoading(true);
     try {
-      await axios.post("http://localhost:7769/travelinfo/", data);
+      await axios.post("https://travel-assignment-app.vercel.app/travelinfo/", data);
       toast({
         title: "Your data added successfully",
 

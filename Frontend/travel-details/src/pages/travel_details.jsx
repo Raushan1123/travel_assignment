@@ -40,7 +40,7 @@ export const TravelDetails = () => {
 
   const getData = async () => {
     try {
-      let Data = await axios.get("http://localhost:7769/travelinfo/");
+      let Data = await axios.get("https://travel-assignment-app.vercel.app/travelinfo/");
       Data = await Data.data;
       setTravelData(Data);
       setIsLoading(false);
