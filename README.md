@@ -1,20 +1,29 @@
 **Travel Booking Application**
+
 A full-stack travel booking application that allows users to create trip details and view them on an admin page. The frontend is developed using React.js and Chakra UI, while the backend is built with Node.js, Express.js, MongoDB, and Mongoose.
 
 Table of Contents
+
   Installation
+  
   Features
+  
   Usage
+  
   API Reference
-  Tests
+  
   License
+  
   Acknowledgments
 
 Installation
+
 Prerequisites:-
+
 Before proceeding with the installation, ensure you have the following installed on your system:
 
 Node.js (https://nodejs.org/)
+
 MongoDB (https://www.mongodb.com/)
 
 Steps:-
