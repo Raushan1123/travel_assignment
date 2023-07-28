@@ -19,7 +19,7 @@ const Navbar = () => {
         <Text p="5px" onClick={() => Navigate("/")} cursor="pointer">
           Homepage
         </Text>
-        <Text p="5px" onClick={() => Navigate("/details")} cursor="pointer">
+        <Text p="5px" onClick={() => Navigate("/login")} cursor="pointer">
           Travel Details
         </Text>
       </Box>
