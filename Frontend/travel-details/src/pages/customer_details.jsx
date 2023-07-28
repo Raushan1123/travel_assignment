@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import 'react-phone-number-input/style.css'
 import validator from 'validator' 
 import {
   Box,
@@ -81,9 +80,9 @@ export const CustomerDetails = () => {
         maxW="md"
         mx="auto"
         mt="4"
-        p="2"
+        p="4"
         rounded="md"
-        boxShadow="lg"
+        boxShadow="md"
         bg="white"
       >
         <form onSubmit={submitForm}>
