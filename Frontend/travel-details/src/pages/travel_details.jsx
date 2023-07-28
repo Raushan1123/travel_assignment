@@ -40,7 +40,7 @@ export const TravelDetails = () => {
 
   const getData = async () => {
     try {
-      let Data = await axios.get("https://travel-gixb.onrender.com/travelinfo");
+      let Data = await axios.get("http://localhost:7769/travelinfo/");
       Data = await Data.data;
       setTravelData(Data);
       setIsLoading(false);
@@ -74,7 +74,7 @@ export const TravelDetails = () => {
           <Tbody>
             { isLoading ? (
               <Tr>
-                <Td colSpan={6} textAlign="center"><Spinner /></Td>
+                <Td colSpan={12} textAlign="center"><Spinner /></Td>
               </Tr>
             ) : traveldata.length ? (
               traveldata.map((item, index) => (
@@ -95,7 +95,7 @@ export const TravelDetails = () => {
               ))
             ) : (
               <Tr>
-                <Td colSpan={6} textAlign="center"><Text>No data available</Text></Td>
+                <Td colSpan={12} textAlign="center"><Text>No data available</Text></Td>
               </Tr>
             )}
           </Tbody>

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import 'react-phone-number-input/style.css'
+import validator from 'validator' 
 import {
   Box,
   Button,
@@ -24,12 +25,12 @@ export const CustomerDetails = () => {
     e.preventDefault();
     setLoading(true);
     try {
-      await axios.post("https://travel-gixb.onrender.com/travelinfo", data);
+      await axios.post("http://localhost:7769/travelinfo/", data);
       toast({
         title: "Your data added successfully",
 
         status: "success",
-        duration: 9000,
+        duration: 3000,
         isClosable: true,
       });
     } catch (err) {
@@ -47,6 +48,16 @@ export const CustomerDetails = () => {
   const [autocompleteCities, setAutocompleteCities] = useState([]);
   const [autocompleteErr, setAutocompleteErr] = useState("");
 
+  const handlePhone = (e) => {
+    if(validator.isMobilePhone(e.target.value)){
+        const { name, value } = e.target;
+        setData({ ...data, [name]: value });
+    }
+    else{
+        alert("Invalid phone number. Please try again");
+    }
+  };
+
   const handleCityChange = async (e) => {
     const { name, value } = e.target;
     setCity(e.target.value);
@@ -63,20 +74,20 @@ export const CustomerDetails = () => {
   return (
     <>
       <Navbar />
-      <Heading as="h1" mb="8" textAlign="center">
+      <Heading as="h1" mb="6" textAlign="center">
         Travel Details
       </Heading>
       <Box
         maxW="md"
         mx="auto"
-        mt="8"
-        p="6"
+        mt="4"
+        p="2"
         rounded="md"
         boxShadow="lg"
         bg="white"
       >
         <form onSubmit={submitForm}>
-          <FormControl mb="4" isRequired>
+          <FormControl mb="2" isRequired>
             <FormLabel htmlFor="name">Name</FormLabel>
             <Input
               type="text"
@@ -86,7 +97,7 @@ export const CustomerDetails = () => {
               placeholder="Enter full name"
             />
           </FormControl>
-          <FormControl mb="4" isRequired>
+          <FormControl mb="2" isRequired>
             <FormLabel htmlFor="email">Email</FormLabel>
             <Input
               type="email"
@@ -96,16 +107,16 @@ export const CustomerDetails = () => {
               placeholder="Enter your email"
             />
           </FormControl>
-          <FormControl mb="4" isRequired>
+          <FormControl mb="2" isRequired>
             <FormLabel htmlFor="Phone">Phone</FormLabel>
             <Input
               name="Phone"
-              onChange={handleChange}
+              onBlur={handlePhone}
               required
               placeholder="Enter Phone Number"
             />
           </FormControl>
-          <FormControl mb="4" isRequired>
+          <FormControl mb="2" isRequired>
             <FormLabel>Where do you want to go?</FormLabel>
             <Input
             list="places"
@@ -124,7 +135,7 @@ export const CustomerDetails = () => {
             ))}
           </datalist>
           </FormControl>
-          <FormControl mb="4" isRequired>
+          <FormControl mb="2" isRequired>
             <FormLabel>Interests</FormLabel>
             <Select
               placeholder="Interests?"
@@ -138,7 +149,7 @@ export const CustomerDetails = () => {
               <option value="Beaches">Beaches</option>
             </Select>
           </FormControl>
-          <FormControl mb="4" isRequired>
+          <FormControl mb="2" isRequired>
             <FormLabel>No. of travellers</FormLabel>
             <Input
               type="number"
@@ -147,7 +158,7 @@ export const CustomerDetails = () => {
               placeholder="enter number of travellers"
             />
           </FormControl>
-          <FormControl mb="4" isRequired>
+          <FormControl mb="2" isRequired>
             <FormLabel>Budget per person </FormLabel>
             <InputGroup>
               <InputLeftElement
@@ -164,7 +175,7 @@ export const CustomerDetails = () => {
               />
             </InputGroup>
           </FormControl>
-          <FormControl mb="4" isRequired>
+          <FormControl mb="2" isRequired>
             <FormLabel htmlFor="tripDuration">Trip_Duration</FormLabel>
             <Input
               type="text"
@@ -174,17 +185,17 @@ export const CustomerDetails = () => {
               placeholder="Enter your trip Duration"
             />
           </FormControl>
-          <FormControl mb="4" isRequired>
+          <FormControl mb="2" isRequired>
             <FormLabel htmlFor="tripDate">Trip_Date</FormLabel>
             <Input
-              type="text"
+              type="date"
               name="Trip_Date"
               onChange={handleChange}
               required
               placeholder="Enter your trip Date"
             />
           </FormControl>
-          <FormControl mb="4" isRequired>
+          <FormControl mb="2" isRequired>
             <FormLabel>Planning_Stage</FormLabel>
             <Select
               placeholder="Planning_Stage?"
@@ -196,13 +207,12 @@ export const CustomerDetails = () => {
               <option value="I want to book a trip">I want to book a trip</option>
             </Select>
           </FormControl>
-          <FormControl mb="4">
+          <FormControl mb="2">
             <FormLabel htmlFor="Notes">Notes</FormLabel>
             <Input
               type="text"
               name="Notes"
               onChange={handleChange}
-              required
               placeholder="Enter your Notes here"
             />
           </FormControl>
